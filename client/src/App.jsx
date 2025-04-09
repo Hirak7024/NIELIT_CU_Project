@@ -4,6 +4,7 @@ import Home from './Pages/Home.jsx';
 import Navbar from './Components/Navbar/Navbar.jsx';
 import Header from './Components/Header.jsx';
 import ConsultationForm from './Pages/ConsultationForm.jsx';
+import ChatBot from './Pages/ChatBot.jsx';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/form' element={<ConsultationForm />} />
+        <Route path='/chatBot' element={<ChatBot />} />
       </Routes>
     </BrowserRouter>
   );

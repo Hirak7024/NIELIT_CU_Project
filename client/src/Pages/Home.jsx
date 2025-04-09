@@ -1,7 +1,7 @@
 import React from 'react';
 import PdfContainer from '../Components/PdfContainer/PdfContainer';
 import { useNavigate } from 'react-router-dom';
-import YouTubeSection from '../Components/YoutubeSection';
+import YouTubeSection from '../Components/YoutubeSection/YoutubeSection';
 
 export default function Home() {
     const navigate = useNavigate();

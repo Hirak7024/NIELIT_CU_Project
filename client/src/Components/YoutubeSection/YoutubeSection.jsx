@@ -1,7 +1,8 @@
 import React from "react";
-import { YoutubeVideos } from "../YoutubeVideos";
+import { YoutubeVideos } from "../../YoutubeVideos";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import "./YoutubeSection.css";
 
 const responsive = {
   superLargeDesktop: {
@@ -33,12 +34,12 @@ const YouTubeSection = () => {
       // showDots={true}
       infinite={true}
       autoPlay={true}
-      autoPlaySpeed={4000} // slower autoplay (3 seconds)
+      autoPlaySpeed={3000} // slower autoplay (3 seconds)
       customTransition="transform 1000ms ease-in-out" // smoother transition
-      transitionDuration={2000} // 1 second slide transition
+      transitionDuration={1500} // 1 second slide transition
     >
       {YoutubeVideos?.map((video) => (
-        <div key={video.id} className="overflow-hidden w-[20rem]">
+        <div key={video.id} className="w-[20rem]">
           <a
             href={`https://www.youtube.com/watch?v=${video.id}`}
             target="_blank"
