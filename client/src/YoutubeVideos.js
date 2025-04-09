@@ -23,4 +23,16 @@ export const YoutubeVideos = [
         id: "wOGqlVqyvCM",
         title: "5 Tips to Improve your Mental Health",
       },
+      {
+        id: "O9qRyFOLdQk",
+        title:"Want Stable Mental Health? Take Charge Of Your Feelings | Gaur Gopal Das"
+      },
+      {
+        id:"qIDX-OkQvIM",
+        title:"How to remain calm under pressure... Buddhism In English"
+      },
+      {
+        id:"U_ilabJbPKU",
+        title:"The Most Effective Calming Techniques, Explained by @GaurGopalDas"
+      }
   ];

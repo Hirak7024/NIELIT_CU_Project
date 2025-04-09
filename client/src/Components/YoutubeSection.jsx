@@ -1,10 +1,33 @@
 import React from "react";
 import { YoutubeVideos } from "../YoutubeVideos";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 7
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 5
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 3
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 2
+  }
+};
 
 const YouTubeSection = () => {
 
   return (
-    <div className="flex gap-[1rem]">
+    // <div className="flex gap-[1rem]">
+    <Carousel responsive={responsive} className="mt-[2rem]">
       {YoutubeVideos?.map((video) => (
         <div key={video.id} className="overflow-hidden w-[20rem]">
           <a
@@ -23,7 +46,8 @@ const YouTubeSection = () => {
           </a>
         </div>
       ))}
-    </div>
+      </Carousel>
+    // </div>
   );
 };
 
