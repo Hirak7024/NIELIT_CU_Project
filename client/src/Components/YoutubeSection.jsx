@@ -27,7 +27,16 @@ const YouTubeSection = () => {
 
   return (
     // <div className="flex gap-[1rem]">
-    <Carousel responsive={responsive} className="mt-[2rem]">
+    <Carousel
+      className="mt-[2rem]"
+      responsive={responsive}
+      // showDots={true}
+      infinite={true}
+      autoPlay={true}
+      autoPlaySpeed={4000} // slower autoplay (3 seconds)
+      customTransition="transform 1000ms ease-in-out" // smoother transition
+      transitionDuration={2000} // 1 second slide transition
+    >
       {YoutubeVideos?.map((video) => (
         <div key={video.id} className="overflow-hidden w-[20rem]">
           <a
@@ -46,7 +55,7 @@ const YouTubeSection = () => {
           </a>
         </div>
       ))}
-      </Carousel>
+    </Carousel>
     // </div>
   );
 };

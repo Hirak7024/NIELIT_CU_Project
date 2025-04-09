@@ -14,7 +14,7 @@ export default function Home() {
                         <img src="./Assets/Images/FormImage2.gif" className='w-full h-full object-contain cursor-pointer' alt=""
                             onClick={() => navigate("/form")} />
                     </div>
-                    <h2 className='text-[23px] text-center font-semibold mt-[0.5rem]'>Form</h2>
+                    <h2 className='text-[23px] text-center font-semibold mt-[0.5rem]'>Consultation Form</h2>
                 </div>
             </div>
             <YouTubeSection/>
