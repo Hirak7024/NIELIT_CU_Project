@@ -78,7 +78,7 @@ export default function ConsultationForm() {
   
 
   return (
-    <div className='w-screen h-fit flex items-center justify-center bg-amber-50'>
+    <div className='w-screen h-full flex items-center justify-center bg-amber-50'>
       <div className='bg-white w-[60vw] mt-[2rem] mb-[3rem] shadow-md rounded-md'>
         <form onSubmit={handleSubmit} className='flex flex-col gap-y-[1.5rem] px-[2rem] pt-[1rem] pb-[2.5rem]'>
           <h1 className='text-[30px] font-medium text-center'>Basic Contact and Mental Health Consultation Form</h1>

@@ -17,7 +17,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <div className='w-[full] h-[4rem] bg-cyan-400'>
+    <div className='w-screen h-[4rem] bg-cyan-400'>
       <ul className='w-full h-full flex gap-[2rem] items-center pl-[2rem]'>
         <li className='NavbarListItems' onClick={()=>navigate("/")}>Home</li>
         <li className='NavbarListItems'>About</li>

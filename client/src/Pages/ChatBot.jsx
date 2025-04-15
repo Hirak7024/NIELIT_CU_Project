@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import ChatBotIcon from '../Components/ChatBotIcon'
 import ChatForm from '../Components/ChatForm'
 import ChatMessage from '../Components/ChatMessage'
+import "../index.css";
 
 const ChatBot = () => {
   const [chatHistory, setChatHistory] = useState([]);
-  const [showChatBot, setShowChatBot] = useState(false);
   const chatBodyRef = useRef();
 
   const generateBotResponse = async (history) => {
@@ -50,10 +50,6 @@ const ChatBot = () => {
 
   return (
     <div className="container">
-      {/* <button onClick={() => setShowChatBot(prev => !prev)} id='chatbot_toggler'>
-        <span className="material-symbols-rounded">mode_comment</span>
-        <span className="material-symbols-rounded">close</span>
-      </button> */}
       <div className="chatbot_popup">
         {/* Chatbot Header */}
         <div className="chat_header">
@@ -61,7 +57,7 @@ const ChatBot = () => {
             <ChatBotIcon />
             <h2 className="logo_text">Chat Bot</h2>
           </div>
-          <button onClick={() => setShowChatBot(prev => !prev)} className="material-symbols-rounded">keyboard_arrow_down</button>
+          <button className="material-symbols-rounded">keyboard_arrow_down</button>
         </div>
 
         {/* Chatbot Body */}

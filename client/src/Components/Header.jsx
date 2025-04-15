@@ -8,7 +8,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <div className='w-full h-[5rem] flex justify-between items-center px-[1rem] bg-blue-950 text-white'>
+    <div className='w-screen h-[5rem] flex justify-between items-center px-[1rem] bg-blue-950 text-white'>
         <img className='w-[7rem] h-[4rem] object-contain cursor-pointer' 
         onClick={()=>navigate("/")}
         src="./Assets/Images/mental_health_logo_2.png" 
