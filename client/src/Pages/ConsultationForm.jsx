@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {
   TextField,
   Radio,
@@ -42,18 +43,15 @@ export default function ConsultationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://127.0.0.1:8000/form/consultationForm/create/', {
-        method: 'POST',
+      const response = await axios.post('http://127.0.0.1:8000/form/consultationForm/create/', formData, {
         headers: {
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+        }
       });
-
-      if (response.ok) {
-        const data = await response.json();
+  
+      if (response.status === 200 || response.status === 201) {
         alert('Consultation Form Submitted Successfully!');
-        console.log(data);
+        console.log(response.data);
         setFormData({
           full_name: '',
           email: '',
@@ -74,8 +72,10 @@ export default function ConsultationForm() {
       }
     } catch (error) {
       console.error(error);
+      alert('An error occurred while submitting the form.');
     }
   };
+  
 
   return (
     <div className='w-screen h-fit flex items-center justify-center bg-amber-50'>

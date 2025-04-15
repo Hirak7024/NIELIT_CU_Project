@@ -29,14 +29,14 @@ const YouTubeSection = () => {
   return (
     // <div className="flex gap-[1rem]">
     <Carousel
-      className="mt-[2rem]"
+      className="mt-[0rem]"
       responsive={responsive}
       // showDots={true}
       infinite={true}
       autoPlay={true}
-      autoPlaySpeed={3000} // slower autoplay (3 seconds)
+      autoPlaySpeed={2000} // slower autoplay (3 seconds)
       customTransition="transform 1000ms ease-in-out" // smoother transition
-      transitionDuration={1500} // 1 second slide transition
+      transitionDuration={1000} // 1 second slide transition
     >
       {YoutubeVideos?.map((video) => (
         <div key={video.id} className="w-[20rem]">
