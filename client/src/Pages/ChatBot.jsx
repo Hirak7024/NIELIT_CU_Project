@@ -28,7 +28,7 @@ const ChatBot = () => {
     try {
       // Make the API call to get the bot's response
       const response = await fetch(process.env.REACT_APP_API_URL, requestOptions);
-    //   console.log("API URL is :", process.env.REACT_APP_API_URL);
+      //   console.log("API URL is :", process.env.REACT_APP_API_URL);
       const data = await response.json();
       if (!response.ok) throw new Error(data.error.message || "Something went wrong!");
 
@@ -49,7 +49,7 @@ const ChatBot = () => {
   }, [chatHistory])
 
   return (
-    <div className="container">
+    <div className="ChatBot_Container">
       <div className="chatbot_popup">
         {/* Chatbot Header */}
         <div className="chat_header">
