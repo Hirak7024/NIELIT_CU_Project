@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ConsultationForm',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'YoutubeVideo'
 ]
 
 MIDDLEWARE = [

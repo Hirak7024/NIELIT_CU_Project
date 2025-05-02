@@ -1,52 +1,60 @@
-import React from "react";
-import { YoutubeVideos } from "../../YoutubeVideos";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./YoutubeSection.css";
 
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
-    items: 7
+    items: 7,
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 5
+    items: 5,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 3
+    items: 3,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 2
-  }
+    items: 2,
+  },
 };
 
 const YouTubeSection = () => {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/youTube/videos/")
+      .then((response) => response.json())
+      .then((data) => {
+        setVideos(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching videos:", error);
+      });
+  }, []);
 
   return (
-    // <div className="flex gap-[1rem]">
     <Carousel
       className="mt-[0rem]"
       responsive={responsive}
-      // showDots={true}
       infinite={true}
       autoPlay={true}
-      autoPlaySpeed={2000} // slower autoplay (3 seconds)
-      customTransition="transform 1000ms ease-in-out" // smoother transition
-      transitionDuration={1000} // 1 second slide transition
+      autoPlaySpeed={2000}
+      customTransition="transform 1000ms ease-in-out"
+      transitionDuration={1000}
     >
-      {YoutubeVideos?.map((video) => (
+      {videos?.map((video) => (
         <div key={video.id} className="w-[20rem]">
           <a
-            href={`https://www.youtube.com/watch?v=${video.id}`}
+            href={`https://www.youtube.com/watch?v=${video.video_id}`}
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+              src={`https://img.youtube.com/vi/${video.video_id}/hqdefault.jpg`}
               alt={video.title}
               className="w-full h-[12rem] rounded-xl object-cover"
             />
@@ -57,7 +65,6 @@ const YouTubeSection = () => {
         </div>
       ))}
     </Carousel>
-    // </div>
   );
 };
 
