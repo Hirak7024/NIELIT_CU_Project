@@ -1,0 +1,1 @@
+ export const servicesItem = ["Individual Therapy", "Couples Therapy", "Acceptance and Commitment Therapy","Group Therapy", "Anger Management"," Anxiety Treatment","Behavioral Health Groups", "Depression Treatment","Dialectical Behavior Therapy", "Executive Coaching", "Health Coaching", "Weight Loss Therapy", "Substance Abuse Treatment"]
