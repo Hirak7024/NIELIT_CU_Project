@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 
 export default function Banner() {
     return (
-        <div className='flex bg-blue thumb light'>
+        <div className='flex'>
             <div className='w-[55vw] mt-[4rem] pl-[8rem]'>
                 <h2 className='text-[#2B59E3] text-[22px] font-[700] mb-[1rem]'>Home</h2>
                 <h1 className='text-[70px] font-[400] leading-[0.9] dm-serif'>Student success starts <br/> with <em>mental health.</em> </h1>

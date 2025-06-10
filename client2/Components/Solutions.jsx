@@ -5,7 +5,7 @@ import { RiArrowRightWideLine } from "react-icons/ri";
 
 export default function Solutions() {
     return (
-        <div className="flex flex-col flex-row gap-10 px-[8rem] py-[4rem]">
+        <div className="flex gap-10 px-[8rem] py-[4rem] bg-[#F7F9FF]">
             {/* Left Section */}
             <div className="w-full md:w-1/3">
                 <h1 className="dm-serif text-[40px] text-[#1D2744] leading-[0.9] mb-[1rem]">

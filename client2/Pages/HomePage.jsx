@@ -2,6 +2,8 @@ import React from 'react'
 import Navbar from '../Components/Navbar'
 import Banner from '../Components/Banner'
 import Solutions from '../Components/Solutions'
+import Quotes from '../Components/Quotes'
+import Reviews from '../Components/Reviews'
 
 export default function HomePage() {
     return (
@@ -11,6 +13,8 @@ export default function HomePage() {
                 <Banner />
             </div>
             <Solutions/>
+            <Quotes/>
+            <Reviews/>
         </div>
     )
 }

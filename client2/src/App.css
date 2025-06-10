@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
 
+
 body{
    font-family: "DM Sans", sans-serif;
    margin: 0;
@@ -20,4 +21,12 @@ body{
 
 .banner-bg{
   background-image: url('./Assets/thumbprint.png');
+}
+
+.quotes-shadow-lg{
+  box-shadow: 0 1rem 2rem rgba(29, 39, 68, 0.05);
+}
+
+.reviews-bg{
+  background: linear-gradient(122deg, #D9E1FF 6.95%, #EEE0ED 90.31%);
 }
