@@ -6,14 +6,14 @@ import { reviews2 } from '../Data/Reviews';
 
 export default function Reviews() {
   return (
-    <div className='flex flex-col items-center justify-center bg-[#F7F9FF] pt-[3rem] relative top-0 left-0'>
+    <div className='w-[100vw] h-[96rem] flex flex-col items-center justify-between bg-[#F7F9FF] pt-[3rem] relative top-0 left-0'>
       <div className='w-[1000px] h-[896px] reviews-bg rounded-lg flex flex-col items-center py-[48px] px-[160px]'>
         <h1 className='text-[64px] dm-serif leading-[0.9] text-center mb-[4rem]'>Proven to help students <br /><em>stay in school.</em></h1>
         <img src="./Assets/Retention-highlight-image.webp" alt="" className='w-[680px] h-[283px]' />
         <p className='text-[16px] mt-[1rem] mb-[2.5rem] text-center'>Among students with high dropout risk, 70% saw improvements after engaging in Mantra <br /> services, and 61% dropped to low risk. With so many factors contributing to a student’s <br /> dropout risk, it’s clear Mantra makes a difference.</p>
         <Button variant="contained" sx={{ width: "12rem", textTransform: "none", fontSize: "18px", padding: "14px 20px", fontWeight: "600", borderRadius: "100rem", boxShadow: "none", backgroundColor: "#2B59E3" }}>Get in Touch</Button>
       </div>
-      <div className='w-[100vw] flex justify-center gap-[2rem] px-[5rem] pb-[2rem] absolute left-0 bottom-[-10rem]'>
+      <div className='w-[100vw] flex justify-center gap-[2rem] px-[5rem] pb-[2rem] absolute left-0 top-[50rem]'>
         {reviews?.map((items, index) => (
           <div key={index} className='w-[412px] h-[284px] flex flex-col justify-between bg-white shadow-lg rounded-lg'>
             <div className='px-[32px] pt-[25px]'>
@@ -27,7 +27,7 @@ export default function Reviews() {
           </div>
         ))}
       </div>
-      <div className='w-[100vw] flex flex-col items-center absolute left-0 bottom-[-30rem]'>
+      <div className='w-[100vw] flex flex-col items-center absolute left-0 top-[72rem]'>
         <div className='w-[1300px] h-[200px] flex items-center py-[20px] bg-[#1D2744] banner-bg'>
           {reviews2?.map((items,index)=>(
             <div key={index} className='px-[32px] flex flex-col items-center justify-center'>
