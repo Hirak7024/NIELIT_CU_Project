@@ -7,11 +7,12 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
-
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { servicesItem } from '../Data/ServicesItem';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
+    const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
 
@@ -46,14 +47,15 @@ export default function Navbar() {
         prevOpen.current = open;
     }, [open]);
     return (
-        <div className='flex justify-between px-[2rem] py-[1.5rem]'>
+        <div className='flex w-full justify-between px-[2rem] py-[1.5rem] fixed top-0 left-0'>
             <div className='flex items-center justify-center gap-[1rem]'>
                 <img src="./Assets/MantraIcon.png" alt="" className='w-[2.2rem] h-[2.2rem] object-cover' />
-                <h1 className='text-[32px] font-[600] text-[#35405F] lora'>Mantra Health</h1>
+                <h1 className='text-[32px] font-[600] text-[#35405F] lora' onClick={()=>navigate("/")}>Mantra Health</h1>
             </div>
             <div className='flex gap-[2rem]'>
                 <ul className='flex gap-[2rem] items-center'>
-                    <li className='text-[18px] text-[#1D2744] font-[600] cursor-pointer hover:text-[#2B59E3]'>Our Solutions</li>
+                    <li className='text-[18px] text-[#1D2744] font-[600] cursor-pointer hover:text-[#2B59E3]'
+                    onClick={()=>navigate("/solutions")}>Our Solutions</li>
                     <li>
                         <Stack direction="row" spacing={2}>
                             <div>

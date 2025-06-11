@@ -7,7 +7,7 @@ export default function Solutions() {
     return (
         <div className="flex gap-10 px-[8rem] py-[4rem] bg-[#F7F9FF]">
             {/* Left Section */}
-            <div className="w-full md:w-1/3">
+            <div className="w-full pt-[1rem] md:w-1/3">
                 <h1 className="dm-serif text-[40px] text-[#1D2744] leading-[0.9] mb-[1rem]">
                     Serve your <em>entire</em> <br /> student body.
                 </h1>

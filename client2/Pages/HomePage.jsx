@@ -1,19 +1,15 @@
-import React from 'react'
-import Navbar from '../Components/Navbar'
-import Banner from '../Components/Banner'
 import Solutions from '../Components/Solutions'
 import Quotes from '../Components/Quotes'
 import Reviews from '../Components/Reviews'
 import YoutubeVideoSection from '../Components/YoutubeVideoSection'
 import ChatBotMain from '../Components/ChatBot/ChatBotMain'
+import { HomePageBanner } from '../Data/BannerData'
+import Banner from '../Components/Banner'
 
 export default function HomePage() {
     return (
         <div>
-            <div className='banner-bg bg-[#F7F9FF]'>
-                <Navbar />
-                <Banner />
-            </div>
+            <Banner data={HomePageBanner}/>
             <Solutions/>
             <Quotes/>
             <Reviews/>
