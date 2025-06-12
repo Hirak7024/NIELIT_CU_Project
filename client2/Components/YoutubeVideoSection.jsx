@@ -36,7 +36,7 @@ const YoutubeVideoSection = () => {
     }, []);
 
     return (
-        <div className="w-[screen] flex flex-col items-center gap-[2rem] bg-[#F7F9FF]">
+        <div className="w-[screen] flex flex-col items-center gap-[2rem] bg-[#F7F9FF] mb-[4rem]">
             <h1 className="text-[42px] font-[500] dm-serif">Video Recommendation</h1>
             <Carousel
                 className="mt-[0rem] w-[80%]"
@@ -48,7 +48,7 @@ const YoutubeVideoSection = () => {
                 transitionDuration={1000}
             >
                 {videos?.map((video) => (
-                    <div key={video.id} className="w-[20rem]">
+                    <div key={video.id} className="w-[18rem]">
                         <a
                             href={`https://www.youtube.com/watch?v=${video.video_id}`}
                             target="_blank"

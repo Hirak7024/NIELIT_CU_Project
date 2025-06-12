@@ -13,6 +13,20 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
     const navigate = useNavigate();
+
+const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup on unmount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+    
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
 
@@ -47,10 +61,10 @@ export default function Navbar() {
         prevOpen.current = open;
     }, [open]);
     return (
-        <div className='flex w-full justify-between px-[2rem] py-[1.5rem] fixed top-0 left-0'>
+        <div className={`flex w-full justify-between px-[2rem] py-[1.5rem] fixed top-0 left-0 z-200 ${scrolled? 'bg-white shadow-md': ''}`}>
             <div className='flex items-center justify-center gap-[1rem]'>
                 <img src="./Assets/MantraIcon.png" alt="" className='w-[2.2rem] h-[2.2rem] object-cover' />
-                <h1 className='text-[32px] font-[600] text-[#35405F] lora' onClick={()=>navigate("/")}>Mantra Health</h1>
+                <h1 className='text-[32px] font-[600] text-[#35405F] lora cursor-pointer' onClick={()=>navigate("/")}>Mantra Health</h1>
             </div>
             <div className='flex gap-[2rem]'>
                 <ul className='flex gap-[2rem] items-center'>

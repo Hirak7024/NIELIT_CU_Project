@@ -6,7 +6,7 @@ import { IoAlertCircleOutline } from "react-icons/io5";
 
 export default function Footer() {
     return (
-        <div className="w-screen bg-[#171F36] px-[8rem] py-[48px] mt-[4rem]">
+        <div className="w-screen bg-[#171F36] px-[8rem] py-[48px]">
             <div className="w-full  flex justify-between">
                 <div className="text-white flex flex-col gap-[16px]">
                     <div className="flex gap-[4rem] items-center">
@@ -45,7 +45,7 @@ export default function Footer() {
                     <p className="text-[14px]">Call or text 9-8-8 (Available 24/7)</p>
                 </div>
                 <div className="w-px h-12 bg-gray-700"></div>
-                <div className="flex gap-[25rem] items-center">
+                <div className="flex gap-[15rem] items-center">
                     <span>
                         <h5 className="text-[16px] font-[500]">Crisis Text Line</h5>
                         <p className="text-[14px]">Text HOME to 741741</p>
