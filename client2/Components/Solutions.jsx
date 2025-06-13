@@ -2,8 +2,10 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import { solutions } from '../Data/SolutionsComponent';
 import { RiArrowRightWideLine } from "react-icons/ri";
+import { useNavigate } from 'react-router-dom';
 
 export default function Solutions() {
+    const navigate = useNavigate()
     return (
         <div className="flex gap-10 px-[8rem] py-[4rem] bg-[#F7F9FF]">
             {/* Left Section */}
@@ -28,6 +30,7 @@ export default function Solutions() {
                         boxShadow: 'none',
                         backgroundColor: '#2B59E3',
                     }}
+                    onClick={()=>navigate("/solutions")}
                 >
                     Explore Solutions
                 </Button>

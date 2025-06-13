@@ -13,3 +13,13 @@ export const SolutionsPageBanner = {
     SolidButton:"Get In Touch",
     BannerImageName: "student-looking-left-2.webp"
 }
+
+export const studentMentalHealth_Page_Banner = {
+    HeadingMessage:"Student Mental Health and Its Impact on Student Success",
+    BannerImageName: "student-female-sitting.webp"
+}
+
+export const mentalHealthPrograms_Page_Banner = {
+    HeadingMessage:"The Ultimate Guide to Mental Health Programs for College Students",
+    BannerImageName: "student-looking-left-2.webp"
+}

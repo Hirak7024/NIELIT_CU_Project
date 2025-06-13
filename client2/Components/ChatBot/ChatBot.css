@@ -12,7 +12,7 @@
 
 #chatbot_toggler {
   position: fixed;
-  z-index: 100;
+  z-index: 400;
   bottom: 30px;
   right: 35px;
   border: none;
@@ -51,10 +51,10 @@
 
 .chatbot_popup {
   position: fixed;
-  z-index: 100;
+  z-index: 300;
   opacity: 0;
   pointer-events: none;
-  bottom: 90px;
+  bottom: 95px;
   right: 35px;
   width: 420px;
   transform: scale(0.2);
@@ -127,7 +127,7 @@
 
 .chat_body {
   padding: 25px 22px;
-  height: 460px;
+  height: 420px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
