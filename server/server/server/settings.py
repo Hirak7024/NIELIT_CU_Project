@@ -37,11 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ConsultationForm',
-    'rest_framework',
     'corsheaders',
-    'YoutubeVideo'
+    'rest_framework',
+    'rest_framework.authtoken',
+    'ConsultationForm',
+    'YoutubeVideo',
+    'loginSignUp',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+# AUTH_TOKEN_MODEL = 'loginSignUp.CustomToken'  
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -4,14 +4,23 @@ import HomePage from '../Pages/HomePage'
 import SolutionsPage from '../Pages/SolutionsPage'
 import StudentMentalHealth from '../Pages/StudentMentalHealth'
 import MentalHealthPrograms from '../Pages/MentalHealthPrograms'
-import './App.css'
+import Login from '../Pages/Login'
+import SignUp from '../Pages/SignUp'
+import AdminSignUp from '../Pages/AdminSignUp'
+import AdminLayout from '../Layouts/AdminLayout'
+import AdminLogin from '../Pages/AdminLogin'
+import { ToastContainer } from 'react-toastify';
+ import './App.css'
 
 function App() {
-
   return (
-   <BrowserRouter>
+    <BrowserRouter>
       <Routes>
-        {/* User Layout Routes */}
+        {/* ❌ No Layout for Login/Signup */}
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<SignUp />} />
+
+        {/* ✅ With UserLayout (Navbar + Footer) */}
         <Route element={<UserLayout />}>
           <Route path='/' element={<HomePage />} />
           <Route path='/solutions' element={<SolutionsPage />} />
@@ -19,12 +28,14 @@ function App() {
           <Route path='/resources_mental_health_programs' element={<MentalHealthPrograms />} />
         </Route>
 
-        {/* Admin Layout Routes */}
-        {/* <Route element={<AdminLayout />}> */}
+        {/* Admin Routes Here */}
+        <Route path='/adminSideSignup' element={<AdminSignUp />} />
+        <Route path='/adminSideLogin' element={<AdminLogin />} />
+        <Route element={<AdminLayout />}>
           {/* <Route path='/adminPage' element={<AdminPage />} /> */}
-          {/* <Route path='/adminPage/video/add' element={<YoutubeVideoAddForm />} /> */}
-        {/* </Route> */}
+        </Route>
       </Routes>
+      <ToastContainer/>
     </BrowserRouter>
   )
 }
