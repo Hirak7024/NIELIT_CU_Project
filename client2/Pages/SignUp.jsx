@@ -22,7 +22,7 @@ export default function SignUp() {
       const response = await axios.post("http://127.0.0.1:8000/auth/userSide/register/", formData);
       console.log(response);
       toast.success(response.data.message);
-      navigate("/");
+      navigate("/login");
     } catch (error) { 
       console.error(error);
     }

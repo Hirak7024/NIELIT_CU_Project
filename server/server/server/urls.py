@@ -22,5 +22,5 @@ urlpatterns = [
     path('form/', include('ConsultationForm.urls')),  # prefixing with 'api/'
     path('youTube/', include('YoutubeVideo.urls')),
     path('auth/', include('loginSignUp.urls')), 
-
+    path('chat/', include('Chat.urls')), 
 ]
