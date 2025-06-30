@@ -10,9 +10,20 @@ import Stack from '@mui/material/Stack';
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { servicesItem } from '../Data/ServicesItem';
 import { useNavigate } from 'react-router-dom';
+import { Context } from '../Utils/Context';
 
 export default function Navbar() {
+    const { loggedInUser, setLoggedInUser } = React.useContext(Context);
     const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        localStorage.removeItem("loggedInUser");
+        setLoggedInUser({
+            Name: "",
+            Email: "",
+            SessionId: ""
+        })
+    }
 
     const [scrolled, setScrolled] = React.useState(false);
     React.useEffect(() => {
@@ -150,7 +161,11 @@ export default function Navbar() {
                 </ul>
 
                 <div className='flex gap-[1rem] items-center'>
-                    <Button variant="contained" sx={{ width: "10rem", textTransform: "none", fontSize: "18px", padding: "14px 20px", fontWeight: "600", borderRadius: "100rem", boxShadow: "none", backgroundColor: "#819DF833", color: "#2B59E3", }} onClick={()=>navigate("/login")}>Login</Button>
+                    {loggedInUser?.SessionId ?
+                        <Button variant="contained" sx={{ width: "10rem", textTransform: "none", fontSize: "18px", padding: "14px 20px", fontWeight: "600", borderRadius: "100rem", boxShadow: "none", backgroundColor: "#819DF833", color: "#2B59E3", }} onClick={handleLogOut}>Logout</Button>
+                        :
+                        <Button variant="contained" sx={{ width: "10rem", textTransform: "none", fontSize: "18px", padding: "14px 20px", fontWeight: "600", borderRadius: "100rem", boxShadow: "none", backgroundColor: "#819DF833", color: "#2B59E3", }} onClick={() => navigate("/login")}>Login</Button>
+                    }
                     <Button variant="contained" sx={{ width: "12rem", textTransform: "none", fontSize: "18px", padding: "14px 20px", fontWeight: "600", borderRadius: "100rem", boxShadow: "none", backgroundColor: "#2B59E3" }}>Get in Touch</Button>
                 </div>
             </div>
