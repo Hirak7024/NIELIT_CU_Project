@@ -3,7 +3,7 @@ import SideBar from "../Components/AdminSide/SideBar";
 
 export default function AdminLayout() {
   return (
-    <div>
+    <div className="flex h-screen">
       <SideBar/>
       <Outlet/>
     </div>

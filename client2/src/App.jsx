@@ -11,7 +11,9 @@ import AdminSignUp from '../Pages/AdminSide/AdminSignUp'
 import AdminLogin from '../Pages/AdminSide/AdminLogin'
 import AdminHomePage from '../Pages/AdminSide/AdminHomePage'
 import { ToastContainer } from 'react-toastify';
- import './App.css'
+import RegisteredUsersChats from '../Pages/AdminSide/RegisteredUsersChats'
+import AnonymousUserChats from '../Pages/AdminSide/AnonymousUserChats'
+import './App.css'
 
 function App() {
   return (
@@ -28,10 +30,12 @@ function App() {
         </Route>
 
         {/* AdminSide Routes */}
-        <Route path='/adminSideSignup' element={<AdminSignUp />} />
-        <Route path='/adminSideLogin' element={<AdminLogin />} />
+        <Route path='/adminSide/signup' element={<AdminSignUp />} />
+        <Route path='/adminSide/login' element={<AdminLogin />} />
         <Route element={<AdminLayout />}>
-          <Route path='/adminSideHome' element={<AdminHomePage />} />
+          <Route path='/adminSide/homePage' element={<AdminHomePage />} />
+          <Route path='/adminSide/registeredUsers' element={<RegisteredUsersChats />} />
+          <Route path='/adminSide/anonymousUsers' element={<AnonymousUserChats />} />
         </Route>
       </Routes>
       <ToastContainer/>

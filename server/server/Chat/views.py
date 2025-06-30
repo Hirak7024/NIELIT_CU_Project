@@ -31,3 +31,18 @@ class ChatHistoryListView(APIView):
         chats = ChatHistory.objects.all().order_by('-timestamp')  # Fetch all chat records, newest first
         serializer = ChatHistorySerializer(chats, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+# View only registered users' chats
+class RegisteredUsersChatView(APIView):
+    def get(self, request):
+        chats = ChatHistory.objects.filter(name__isnull=False, email__isnull=False).exclude(name="", email="").order_by('-timestamp')
+        serializer = ChatHistorySerializer(chats, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+# View only unregistered (anonymous) users' chats
+class UnregisteredUsersChatView(APIView):
+    def get(self, request):
+        chats = ChatHistory.objects.filter(name__in=[None, ""], email__in=[None, ""]).order_by('-timestamp')
+        serializer = ChatHistorySerializer(chats, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

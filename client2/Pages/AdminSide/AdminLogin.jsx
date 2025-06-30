@@ -45,7 +45,7 @@ export default function AdminLogin() {
             <div className='w-[468px] shadow-md'>
                 <div className='flex flex-col justify-between w-full h-[220px] p-[24px] text-black bg-[#dee3f8]'>
                     <div className='flex items-center gap-[1rem]'>
-                        <img src="./Assets/MantraIcon.png" className='w-[24px] h-[24px] object-contain' alt="" />
+                        <img src="/Assets/MantraIcon.png" className='w-[24px] h-[24px] object-contain' alt="" />
                         <h3 className='dm-serif text-[24px] font-[400]'>Mantra Health</h3>
                     </div>
                     <h1 className='dm-serif text-[48px] leading-[0.9]'>School-sponsored <br /> mental health care.</h1>
@@ -69,7 +69,7 @@ export default function AdminLogin() {
                         value={formData.password}
                         onChange={handleChange} />
                     <button type="submit" className='w-full py-[12px] px-[16px] bg-[#2B59E3] text-[16px] font-[700] text-white mt-[1rem] mb-[15px] cursor-pointer'>Continue</button>
-                    <p className='text-[16px] flex gap-[10px] self-center'>New to Mantra ? <u onClick={() => navigate("/adminSideSignup")} className='font-[700] text-[#2B59E3] cursor-pointer'>Sign Up</u></p>
+                    <p className='text-[16px] flex gap-[10px] self-center'>New to Mantra ? <u onClick={() => navigate("/adminSide/signup")} className='font-[700] text-[#2B59E3] cursor-pointer'>Sign Up</u></p>
                 </form>
             </div>
         </div>

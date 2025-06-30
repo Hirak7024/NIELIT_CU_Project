@@ -11,6 +11,7 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { servicesItem } from '../Data/ServicesItem';
 import { useNavigate } from 'react-router-dom';
 import { Context } from '../Utils/Context';
+import { v4 as uuidv4 } from "uuid";
 
 export default function Navbar() {
     const { loggedInUser, setLoggedInUser } = React.useContext(Context);
@@ -18,11 +19,7 @@ export default function Navbar() {
 
     const handleLogOut = () => {
         localStorage.removeItem("loggedInUser");
-        setLoggedInUser({
-            Name: "",
-            Email: "",
-            SessionId: ""
-        })
+        window.location.reload();
     }
 
     const [scrolled, setScrolled] = React.useState(false);
@@ -161,7 +158,7 @@ export default function Navbar() {
                 </ul>
 
                 <div className='flex gap-[1rem] items-center'>
-                    {loggedInUser?.SessionId ?
+                    {loggedInUser?.Name ?
                         <Button variant="contained" sx={{ width: "10rem", textTransform: "none", fontSize: "18px", padding: "14px 20px", fontWeight: "600", borderRadius: "100rem", boxShadow: "none", backgroundColor: "#819DF833", color: "#2B59E3", }} onClick={handleLogOut}>Logout</Button>
                         :
                         <Button variant="contained" sx={{ width: "10rem", textTransform: "none", fontSize: "18px", padding: "14px 20px", fontWeight: "600", borderRadius: "100rem", boxShadow: "none", backgroundColor: "#819DF833", color: "#2B59E3", }} onClick={() => navigate("/login")}>Login</Button>

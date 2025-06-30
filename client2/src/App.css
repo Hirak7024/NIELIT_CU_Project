@@ -22,7 +22,7 @@ body{
 }
 
 .banner-bg{
-  background-image: url('./Assets/thumbprint.png');
+  background-image: url('/Assets/thumbprint.png');
 }
 
 .quotes-shadow-lg{
