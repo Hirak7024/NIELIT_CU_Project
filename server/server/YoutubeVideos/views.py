@@ -42,16 +42,12 @@ def edit_video(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # Delete video
-@api_view(['DELETE'])
+@api_view(['POST'])
 def delete_video(request):
-    pk = request.data.get('id')
-    if not pk:
-        return Response({"error": "Video ID is required."}, status=status.HTTP_400_BAD_REQUEST)
-
+    video_id = request.data.get('id')
     try:
-        video = YouTubeVideo.objects.get(pk=pk)
+        video = YouTubeVideo.objects.get(id=video_id)
+        video.delete()
+        return Response({"message": "Video deleted successfully"}, status=status.HTTP_200_OK)
     except YouTubeVideo.DoesNotExist:
-        return Response({"error": "Video not found."}, status=status.HTTP_404_NOT_FOUND)
-
-    video.delete()
-    return Response({"message": "Video deleted successfully."}, status=status.HTTP_204_NO_CONTENT)
+        return Response({"error": "Video not found"}, status=status.HTTP_404_NOT_FOUND)
