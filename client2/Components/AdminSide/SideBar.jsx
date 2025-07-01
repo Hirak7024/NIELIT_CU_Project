@@ -10,7 +10,8 @@ export default function SideBar() {
                 <h1 className='text-[24px] dm-serif font-500'>Mantra</h1>
             </div>
             <ul className='w-full h-full'>
-                <li className='p-[1rem] cursor-pointer text-[16px] font-[500] hover:bg-[#596ca4]'>YouTube Videos</li>
+                <li className='p-[1rem] cursor-pointer text-[16px] font-[500] hover:bg-[#596ca4]'
+                onClick={()=>navigate("/adminSide/youtubeVideos")}>YouTube Videos</li>
                 <li className='p-[1rem] cursor-pointer text-[16px] font-[500] hover:bg-[#596ca4]'>Articles</li>
                 <li className='p-[1rem] cursor-pointer text-[16px] font-[500] hover:bg-[#596ca4]'>Blogs</li>
                 {/* <li className='p-[1rem] cursor-pointer text-[16px] font-[500] hover:bg-[#596ca4]'>Chats</li> */}
@@ -18,7 +19,8 @@ export default function SideBar() {
                 onClick={()=>navigate('/adminSide/registeredUsers')}>Registered Users</li>
                 <li className='p-[1rem] cursor-pointer text-[16px] font-[500] hover:bg-[#596ca4]'
                 onClick={()=>navigate('/adminSide/anonymousUsers')}>Anonymous Users</li>
-                <li className='p-[1rem] cursor-pointer text-[16px] font-[500] hover:bg-[#596ca4]'>Logout</li>
+                <li className='p-[1rem] cursor-pointer text-[16px] font-[500] hover:bg-[#596ca4]'
+                onClick={()=>navigate("/adminSide")}>Logout</li>
             </ul>
         </div>
     )

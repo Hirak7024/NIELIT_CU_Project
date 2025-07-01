@@ -20,7 +20,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('form/', include('ConsultationForm.urls')),  # prefixing with 'api/'
-    path('youTube/', include('YoutubeVideo.urls')),
     path('auth/', include('loginSignUp.urls')), 
     path('chat/', include('Chat.urls')), 
+    path('youtubeVideo/',include('YoutubeVideos.urls')),
 ]

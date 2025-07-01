@@ -14,6 +14,7 @@ import { ToastContainer } from 'react-toastify';
 import RegisteredUsersChats from '../Pages/AdminSide/RegisteredUsersChats'
 import AnonymousUserChats from '../Pages/AdminSide/AnonymousUserChats'
 import './App.css'
+import YouTubeVideo from '../Pages/AdminSide/YouTubeVideo'
 
 function App() {
   return (
@@ -31,11 +32,12 @@ function App() {
 
         {/* AdminSide Routes */}
         <Route path='/adminSide/signup' element={<AdminSignUp />} />
-        <Route path='/adminSide/login' element={<AdminLogin />} />
+        <Route path='/adminSide' element={<AdminLogin />} />
         <Route element={<AdminLayout />}>
           <Route path='/adminSide/homePage' element={<AdminHomePage />} />
           <Route path='/adminSide/registeredUsers' element={<RegisteredUsersChats />} />
           <Route path='/adminSide/anonymousUsers' element={<AnonymousUserChats />} />
+          <Route path='/adminSide/youtubeVideos' element={<YouTubeVideo />} />
         </Route>
       </Routes>
       <ToastContainer/>

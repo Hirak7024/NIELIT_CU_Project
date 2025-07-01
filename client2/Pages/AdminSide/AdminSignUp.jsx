@@ -21,7 +21,7 @@ export default function AdminSignUp() {
       const response = await axios.post("http://127.0.0.1:8000/auth/adminSide/register/", formData);
       console.log(response);
       toast.success(response.data.message);
-      navigate("/adminSideLogin");
+      navigate("/adminSide");
     } catch (error) { 
       console.error(error);
     }
@@ -62,7 +62,7 @@ export default function AdminSignUp() {
                         value={formData.password}
                         onChange={handleChange} />
                     <button type="submit" className='w-full py-[12px] px-[16px] bg-[#2B59E3] text-[16px] font-[700] text-white mt-[1rem] mb-[15px] cursor-pointer'>Continue</button>
-                    <p className='text-[16px] flex gap-[10px] self-center'>Already have an account ? <u onClick={() => navigate("/adminSide/login")} className='font-[700] text-[#2B59E3] cursor-pointer'>Sign In</u></p>
+                    <p className='text-[16px] flex gap-[10px] self-center'>Already have an account ? <u onClick={() => navigate("/adminSide")} className='font-[700] text-[#2B59E3] cursor-pointer'>Sign In</u></p>
                 </form>
             </div>
         </div>

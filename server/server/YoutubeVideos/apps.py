@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class YoutubevideoConfig(AppConfig):
+class YoutubevideosConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'YoutubeVideo'
+    name = 'YoutubeVideos'

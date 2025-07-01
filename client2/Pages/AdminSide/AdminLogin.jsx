@@ -28,7 +28,7 @@ export default function AdminLogin() {
                 SessionId: response.data.session_id
             })
             toast.success(response.data.message);
-            //   navigate("/");
+            navigate("/adminSide/homePage");
         } catch (error) {
             console.error(error);
         }
