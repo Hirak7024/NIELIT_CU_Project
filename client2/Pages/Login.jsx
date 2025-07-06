@@ -22,6 +22,7 @@ export default function Login() {
     const loginUser = async () => {
         try {
             const response = await axios.post("http://127.0.0.1:8000/auth/userSide/login/", formData);
+            // console.log(response)
             const userData = {
                 Name: response.data.name,
                 Email: response.data.email,
@@ -35,6 +36,7 @@ export default function Login() {
             navigate("/");
         } catch (error) {
             console.error(error);
+            toast.error(error.response.data.error)
         }
     };
 

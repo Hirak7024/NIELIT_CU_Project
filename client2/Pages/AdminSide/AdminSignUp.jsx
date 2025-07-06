@@ -15,22 +15,23 @@ export default function AdminSignUp() {
         setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
-    
-  const SignUpUser = async () => {
-    try {
-      const response = await axios.post("http://127.0.0.1:8000/auth/adminSide/register/", formData);
-      console.log(response);
-      toast.success(response.data.message);
-      navigate("/adminSide");
-    } catch (error) { 
-      console.error(error);
-    }
-  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-      await SignUpUser();
-  };
+    const SignUpUser = async () => {
+        try {
+            const response = await axios.post("http://127.0.0.1:8000/auth/adminSide/register/", formData);
+            console.log(response);
+            toast.success(response.data.message);
+            navigate("/adminSide");
+        } catch (error) {
+            console.error(error);
+            toast.error(error.response.data.error);
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await SignUpUser();
+    };
 
 
     return (

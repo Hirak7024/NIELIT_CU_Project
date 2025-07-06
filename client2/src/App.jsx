@@ -15,6 +15,7 @@ import RegisteredUsersChats from '../Pages/AdminSide/RegisteredUsersChats'
 import AnonymousUserChats from '../Pages/AdminSide/AnonymousUserChats'
 import './App.css'
 import YouTubeVideo from '../Pages/AdminSide/YouTubeVideo'
+import ConsultationForm from '../Pages/ConsultationForm'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/solutions' element={<SolutionsPage />} />
           <Route path='/resources_student_mental_health' element={<StudentMentalHealth />} />
           <Route path='/resources_mental_health_programs' element={<MentalHealthPrograms />} />
+          <Route path='/consultationForm' element={<ConsultationForm/>}/>
         </Route>
 
         {/* AdminSide Routes */}

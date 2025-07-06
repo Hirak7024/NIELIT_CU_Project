@@ -24,7 +24,7 @@ export default function Navbar() {
 
     const [scrolled, setScrolled] = React.useState(false);
     React.useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 100);
+        const handleScroll = () => setScrolled(window.scrollY > 70);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -163,7 +163,7 @@ export default function Navbar() {
                         :
                         <Button variant="contained" sx={{ width: "10rem", textTransform: "none", fontSize: "18px", padding: "14px 20px", fontWeight: "600", borderRadius: "100rem", boxShadow: "none", backgroundColor: "#819DF833", color: "#2B59E3", }} onClick={() => navigate("/login")}>Login</Button>
                     }
-                    <Button variant="contained" sx={{ width: "12rem", textTransform: "none", fontSize: "18px", padding: "14px 20px", fontWeight: "600", borderRadius: "100rem", boxShadow: "none", backgroundColor: "#2B59E3" }}>Get in Touch</Button>
+                    <Button variant="contained" sx={{ width: "12rem", textTransform: "none", fontSize: "18px", padding: "14px 20px", fontWeight: "600", borderRadius: "100rem", boxShadow: "none", backgroundColor: "#2B59E3" }} onClick={()=>navigate("/consultationForm")}>Get in Touch</Button>
                 </div>
             </div>
         </div>

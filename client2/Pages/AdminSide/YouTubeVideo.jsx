@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import YouTubeVideoAdd from '../../Components/AdminSide/YouTubeVideoAdd';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,7 +7,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { BiEdit } from "react-icons/bi";
-import { MdDeleteOutline, MdDone } from "react-icons/md";
+import { MdCancel, MdDeleteOutline, MdDone,MdOutlineCancel } from "react-icons/md";
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 export default function YouTubeVideo() {
@@ -17,6 +17,33 @@ export default function YouTubeVideo() {
     const [error, setError] = useState(null);
     const [editingId, setEditingId] = useState(null);
     const [editedVideo, setEditedVideo] = useState({ video_title: '', video_link: '' });
+
+    // For adding Video
+    const [formData, setFormData] = useState({
+        video_title: "",
+        video_link: ""
+    })
+
+    const addVideo = async () => {
+        try {
+            const response = await axios.post("http://127.0.0.1:8000/youtubeVideo/post/", formData)
+            console.log(response.data);
+            toast.success(response.data.message);
+            setFormData({video_title: "",video_link: ""})
+        }
+        catch (error) {
+            console.error(error)
+        }
+    }
+
+    const handleChange = (e) => {
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await addVideo();
+    };
 
     // Fetch all videos on mount
     useEffect(() => {
@@ -32,7 +59,7 @@ export default function YouTubeVideo() {
             }
         };
         fetchVideos();
-    }, []);
+    }, [addVideo]);
 
     // Extract YouTube video ID
     const getYouTubeVideoId = (url) => {
@@ -92,10 +119,42 @@ export default function YouTubeVideo() {
         setEditedVideo(prev => ({ ...prev, [field]: value }));
     };
 
+    // To cancel Edit
+    const cancelEdit = () => {
+    setEditingId(null);
+    setEditedVideo({ video_title: '', video_link: '' });
+};
+
+
     return (
         <div className='w-full h-full px-[2.5rem] py-[1rem] ml-[20rem]'>
             <h1 className='text-[35px] font-[600]'>YouTube Videos</h1>
-            <YouTubeVideoAdd />
+
+            <form className='flex flex-col items-center bg-[#0F0F0F] text-white px-[2rem] mt-[1rem] pt-[15px] pb-[15px] rounded-[10px]'
+                onSubmit={handleSubmit}>
+                <h1 className='text-[20px] mb-[15px]'>Add a new video</h1>
+                <div className='w-full flex flex-row items-center gap-[1rem]'>
+                    <h1 className='text-[16px] font-[500]'>Title</h1>
+                    <input className='p-[10px] w-full text-[14px] bg-[#272727]'
+                        type="text"
+                        placeholder='Enter video title'
+                        id='Video_Title'
+                        name='video_title'
+                        value={formData.video_title}
+                        onChange={handleChange} />
+                </div>
+                <div className='w-full flex flex-row items-center gap-[1rem] mt-[10px]'>
+                    <h1 className='text-[16px] font-[500]'>Link</h1>
+                    <input className='ml-[3px] p-[10px] w-full text-[14px] bg-[#272727]'
+                        type="text"
+                        placeholder='Enter video url'
+                        id='Video_Litle'
+                        name='video_link'
+                        value={formData.video_link}
+                        onChange={handleChange} />
+                </div>
+                <button type='submit' className='self-start mt-[1rem] bg-blue-700 text-white font-[500] text-[14px] w-[7rem] h-[2.3rem] rounded-[5px] cursor-pointer'>Add</button>
+            </form>
 
             <div className='w-full mt-[2rem]'>
                 {videos.length !== 0 && (
@@ -163,11 +222,18 @@ export default function YouTubeVideo() {
                                             <TableCell align="left">
                                                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                                                     {isEditing ? (
+                                                        <>
                                                         <MdDone
                                                             title="Save"
                                                             onClick={() => saveEdit(video.id)}
                                                             style={{ cursor: 'pointer', color: 'green', fontSize: "1.5rem" }}
-                                                        />
+                                                            />
+                                                         <MdOutlineCancel
+                                                            title="Cancel"
+                                                            onClick={cancelEdit}
+                                                            style={{ cursor: 'pointer', color: 'red', fontSize: "1.5rem" }}
+                                                            />
+                                                            </>
                                                     ) : (
                                                         <>
                                                             <BiEdit

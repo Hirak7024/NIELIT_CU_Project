@@ -1,7 +1,7 @@
 from django.db import models
 
 class ConsultationForm(models.Model):
-    full_name = models.CharField(max_length=100)
+    full_name = models.CharField(max_length=100,blank=True, null=True)
     email = models.EmailField()
     phone = models.CharField(max_length=15)
     age = models.PositiveIntegerField()
@@ -12,7 +12,7 @@ class ConsultationForm(models.Model):
     consulted_before = models.CharField(max_length=3)
     preferred_mode_of_therapy = models.CharField(max_length=20)
     best_contact_time = models.CharField(max_length=10)
-    problem_description = models.TextField()
+    problem_description = models.TextField(blank=True, null=True)
     agree_to_policy = models.BooleanField(default=False)
     submitted_at = models.DateTimeField(auto_now_add=True)
 

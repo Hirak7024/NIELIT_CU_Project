@@ -17,18 +17,18 @@ export default function ConsultationForm() {
   const mentalHealthConcernsOptions = ["Anxiety", "Depression", "Stress Management", "Relationship Issues", "Sleep Problems", "Workplace Stress"];
 
   const [formData, setFormData] = useState({
-    full_name: '',
-    email: '',
-    phone: '',
-    age: '',
-    gender: '',
-    subject: '',
-    preferred_contact_method: '',
-    mental_health_concerns: '',
-    consulted_before: '',
-    preferred_mode_of_therapy: '',
-    best_contact_time: '',
-    problem_description: '',
+    full_name: "",
+    email: "",
+    phone: "",
+    age: null,
+    gender: "",
+    subject: "",
+    preferred_contact_method: "",
+    mental_health_concerns: "",
+    consulted_before: "",
+    preferred_mode_of_therapy: "",
+    best_contact_time: "",
+    problem_description: "",
     agree_to_policy: false
   });
 
@@ -48,23 +48,23 @@ export default function ConsultationForm() {
           'Content-Type': 'application/json'
         }
       });
-  
+
       if (response.status === 200 || response.status === 201) {
         alert('Consultation Form Submitted Successfully!');
         console.log(response.data);
         setFormData({
-          full_name: '',
-          email: '',
-          phone: '',
-          age: '',
-          gender: '',
-          subject: '',
-          preferred_contact_method: '',
-          mental_health_concerns: '',
-          consulted_before: '',
-          preferred_mode_of_therapy: '',
-          best_contact_time: '',
-          problem_description: '',
+          full_name: "",
+          email: "",
+          phone: "",
+          age: null,
+          gender: "",
+          subject: "",
+          preferred_contact_method: "",
+          mental_health_concerns: "",
+          consulted_before: "",
+          preferred_mode_of_therapy: "",
+          best_contact_time: "",
+          problem_description: "",
           agree_to_policy: false
         });
       } else {
@@ -75,15 +75,15 @@ export default function ConsultationForm() {
       alert('An error occurred while submitting the form.');
     }
   };
-  
+
 
   return (
     <div className='w-screen h-full flex items-center justify-center bg-amber-50'>
-      <div className='bg-white w-[60vw] mt-[2rem] mb-[3rem] shadow-md rounded-md'>
+      <div className='bg-white w-[60vw] mt-[7rem] mb-[3rem] shadow-md rounded-md'>
         <form onSubmit={handleSubmit} className='flex flex-col gap-y-[1.5rem] px-[2rem] pt-[1rem] pb-[2.5rem]'>
           <h1 className='text-[30px] font-medium text-center'>Basic Contact and Mental Health Consultation Form</h1>
 
-          <TextField name="full_name" label="Full Name" value={formData.full_name} onChange={handleChange} fullWidth />
+          <TextField name="full_name" label="Full Name (Optional)" value={formData.full_name} onChange={handleChange} fullWidth />
           <TextField name="email" label="Email Address" value={formData.email} onChange={handleChange} fullWidth />
           <TextField name="phone" label="Phone Number" value={formData.phone} onChange={handleChange} fullWidth />
           <TextField name="age" type="number" label="Age" value={formData.age} onChange={handleChange} fullWidth />
@@ -148,7 +148,7 @@ export default function ConsultationForm() {
 
           <TextField
             name="problem_description"
-            label="Describe your problem"
+            label="Describe your problem (Optional)"
             multiline
             rows={4}
             value={formData.problem_description}
@@ -161,7 +161,7 @@ export default function ConsultationForm() {
             label="I agree to the privacy policy and consent to being contacted."
           />
 
-          <Button type="submit" variant="contained"  disabled={!formData.agree_to_policy} sx={{ width: '10rem', height: '2.7rem', fontSize: '16px', alignSelf: 'center' }}>
+          <Button type="submit" variant="contained" disabled={!formData.agree_to_policy} sx={{ width: '10rem', height: '2.7rem', fontSize: '16px', alignSelf: 'center' }}>
             Submit
           </Button>
         </form>
