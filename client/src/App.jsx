@@ -13,9 +13,10 @@ import AdminHomePage from '../Pages/AdminSide/AdminHomePage'
 import { ToastContainer } from 'react-toastify';
 import RegisteredUsersChats from '../Pages/AdminSide/RegisteredUsersChats'
 import AnonymousUserChats from '../Pages/AdminSide/AnonymousUserChats'
-import './App.css'
 import YouTubeVideo from '../Pages/AdminSide/YouTubeVideo'
 import ConsultationForm from '../Pages/ConsultationForm'
+import Blogs from '../Pages/Blogs/Blogs'
+import './App.css'
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path='/resources_student_mental_health' element={<StudentMentalHealth />} />
           <Route path='/resources_mental_health_programs' element={<MentalHealthPrograms />} />
           <Route path='/consultationForm' element={<ConsultationForm/>}/>
+          <Route path='/blogs' element={<Blogs/>}/>
         </Route>
 
         {/* AdminSide Routes */}

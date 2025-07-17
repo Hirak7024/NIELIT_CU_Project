@@ -141,7 +141,7 @@ export default function Navbar() {
                                                         <MenuItem sx={{ py: 1.2 }} onClick={() => handleNavigate("/resources_student_mental_health")}>
                                                             Student Mental Health
                                                         </MenuItem>
-                                                        <MenuItem sx={{ py: 1.2 }} onClick={handleClose2}>
+                                                        <MenuItem sx={{ py: 1.2 }} onClick={()=>handleNavigate("/blogs")}>
                                                             Blog
                                                         </MenuItem>
                                                     </MenuList>
