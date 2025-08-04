@@ -21,6 +21,7 @@
     "@tailwindcss/vite": "^4.1.8",
     "axios": "^1.10.0",
     "bootstrap": "^5.3.6",
+    "jodit-react": "^5.2.19",
     "lexical": "^0.33.1",
     "react": "^19.1.0",
     "react-bootstrap": "^2.10.10",

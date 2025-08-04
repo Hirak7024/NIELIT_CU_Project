@@ -17,6 +17,7 @@ import YouTubeVideo from '../Pages/AdminSide/YouTubeVideo'
 import ConsultationForm from '../Pages/ConsultationForm'
 import Blogs from '../Pages/Blogs/Blogs'
 import './App.css'
+import CreateBlog from '../Pages/AdminSide/Blogs/CreateBlog'
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path='/adminSide/registeredUsers' element={<RegisteredUsersChats />} />
           <Route path='/adminSide/anonymousUsers' element={<AnonymousUserChats />} />
           <Route path='/adminSide/youtubeVideos' element={<YouTubeVideo />} />
+          <Route path='adminSide/createBlog' element={<CreateBlog />} />
         </Route>
       </Routes>
       <ToastContainer/>

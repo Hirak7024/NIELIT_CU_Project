@@ -1,7 +1,24 @@
+import { useEffect, useState } from 'react'
 import BlogItem from './BlogItem'
-import { BlogItemsHeadings } from '../../Data/BlogItemsHeadings'
+import axios from "axios"
 
 export default function Blogs() {
+    const [blogs, setBlogs] = useState([])
+
+    useEffect(() => {
+        const fetchBlogs = async () => {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/blogs/blog/')
+                console.log(response.data)
+                setBlogs(response.data)
+            } catch (error) {
+                console.error('Failed to fetch blogs:', error)
+            }
+        }
+
+        fetchBlogs()
+    }, [])
+
     return (
         <div className='pt-[7rem] pb-[5rem] w-[100vw] px-[5rem] bg-[#F7F9FF]'>
             <div className='relative'>
@@ -18,8 +35,8 @@ export default function Blogs() {
             </div>
             <div className='pt-[3rem] w-[100%] flex gap-[1.5rem]'>
                 <div className='w-[60%]'>
-                    {BlogItemsHeadings?.map((item,index)=>(
-                        <BlogItem heading={item} key={index}/>
+                    {blogs?.map((blog, index) => (
+                        <BlogItem blogData={blog} key={index} />
                     ))}
                 </div>
                 <div className='w-[30%]'>

@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
-import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import SendIcon from '@mui/icons-material/Send';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import StarBorder from '@mui/icons-material/StarBorder';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 export default function Sidebar() {
     const navigate = useNavigate();
-    const [open, setOpen] = useState(false);
+    const [openChats, setOpenChats] = useState(false);
+    const [openBlogs, setOpenBlogs] = useState(false);
 
-    const handleClick = () => {
-        setOpen(!open);
+    const handleChatsClick = () => {
+        setOpenChats(!openChats);
+    };
+
+    const handleBlogsClick = () => {
+        setOpenBlogs(!openBlogs);
     };
 
     return (
@@ -35,27 +34,47 @@ export default function Sidebar() {
                 <ListItemButton sx={{ '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }} onClick={() => navigate("/adminSide/youtubeVideos")}>
                     <ListItemText sx={{ fontSize: "20px", marginLeft: "1rem", padding: "5px" }} primary="Youtube Videos" />
                 </ListItemButton>
+
                 <ListItemButton sx={{ '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }}>
+                    <ListItemText sx={{ fontSize: "20px", marginLeft: "1rem", padding: "5px" }} primary="Users" />
+                </ListItemButton>
+
+                {/* Blogs Section */}
+                <ListItemButton onClick={handleBlogsClick} sx={{ '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }}>
                     <ListItemText sx={{ fontSize: "20px", marginLeft: "1rem", padding: "5px" }} primary="Blogs" />
+                    {openBlogs ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
-                <ListItemButton sx={{ '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }}>
-                    <ListItemText sx={{ fontSize: "20px", marginLeft: "1rem", padding: "5px" }} primary="Registered Users" />
-                </ListItemButton >
-                <ListItemButton onClick={handleClick} sx={{ '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }}>
-                    <ListItemText sx={{ fontSize: "20px", marginLeft: "1rem", padding: "5px" }} primary="Chats" />
-                    {open ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse in={open} timeout="auto" unmountOnExit>
+                <Collapse in={openBlogs} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                        <ListItemButton sx={{ pl: 4, '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }} onClick={()=>navigate('/adminSide/registeredUsers')}>
-                            <ListItemText sx={{ fontSize: "20px", marginLeft: "1rem", padding: "5px" }} primary="Registered Users" />
+                        <ListItemButton sx={{ pl: 4, '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }} onClick={() => navigate('/adminSide/createBlog')}>
+                            <ListItemText sx={{ fontSize: "18px", marginLeft: "1rem", padding: "5px" }} primary="Create Blog" />
                         </ListItemButton>
-                        <ListItemButton sx={{ pl: 4, '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }} onClick={()=>navigate('/adminSide/anonymousUsers')}>
-                            <ListItemText sx={{ fontSize: "20px", marginLeft: "1rem", padding: "5px" }} primary="Anonymous Users" />
+                        <ListItemButton sx={{ pl: 4, '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }} onClick={() => navigate('/adminSide/allBlogs')}>
+                            <ListItemText sx={{ fontSize: "18px", marginLeft: "1rem", padding: "5px" }} primary="All Blogs" />
                         </ListItemButton>
                     </List>
                 </Collapse>
-                <ListItemButton sx={{ '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }} onClick={()=>navigate("/adminSide")}>
+
+
+
+                {/* Chats Section */}
+                <ListItemButton onClick={handleChatsClick} sx={{ '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }}>
+                    <ListItemText sx={{ fontSize: "20px", marginLeft: "1rem", padding: "5px" }} primary="Chats" />
+                    {openChats ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                <Collapse in={openChats} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        <ListItemButton sx={{ pl: 4, '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }} onClick={() => navigate('/adminSide/registeredUsers')}>
+                            <ListItemText sx={{ fontSize: "18px", marginLeft: "1rem", padding: "5px" }} primary="Registered Users" />
+                        </ListItemButton>
+                        <ListItemButton sx={{ pl: 4, '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }} onClick={() => navigate('/adminSide/anonymousUsers')}>
+                            <ListItemText sx={{ fontSize: "18px", marginLeft: "1rem", padding: "5px" }} primary="Anonymous Users" />
+                        </ListItemButton>
+                    </List>
+                </Collapse>
+
+                {/* Logout */}
+                <ListItemButton sx={{ '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }} onClick={() => navigate("/adminSide")}>
                     <ListItemText sx={{ fontSize: "20px", marginLeft: "1rem", padding: "5px" }} primary="Logout" />
                 </ListItemButton>
             </List>

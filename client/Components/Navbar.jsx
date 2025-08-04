@@ -142,7 +142,7 @@ export default function Navbar() {
                                                             Student Mental Health
                                                         </MenuItem>
                                                         <MenuItem sx={{ py: 1.2 }} onClick={()=>handleNavigate("/blogs")}>
-                                                            Blog
+                                                            Blogs
                                                         </MenuItem>
                                                     </MenuList>
                                                 </ClickAwayListener>
