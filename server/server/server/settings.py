@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'loginSignUp',
     'Chat',
     'YoutubeVideos',
+    'Blogs',
     'django.contrib.sessions',
 ]
 

@@ -23,4 +23,5 @@ urlpatterns = [
     path('auth/', include('loginSignUp.urls')), 
     path('chat/', include('Chat.urls')), 
     path('youtubeVideo/',include('YoutubeVideos.urls')),
+    path('blogs/',include('Blogs.urls')),
 ]
