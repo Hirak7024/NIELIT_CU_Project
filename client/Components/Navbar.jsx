@@ -11,10 +11,10 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { servicesItem } from '../Data/ServicesItem';
 import { useNavigate } from 'react-router-dom';
 import { Context } from '../Utils/Context';
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 export default function Navbar() {
-    const { loggedInUser, setLoggedInUser } = React.useContext(Context);
+    const { loggedInUser, /*setLoggedInUser*/ } = React.useContext(Context);
     const navigate = useNavigate();
 
     const handleLogOut = () => {
@@ -65,7 +65,7 @@ export default function Navbar() {
     return (
         <div className={`flex w-full justify-between px-[2rem] py-[1.5rem] fixed top-0 left-0 z-200 ${scrolled ? 'bg-white shadow-md' : ''}`}>
             <div className='flex items-center justify-center gap-[1rem]'>
-                <img src="./Assets/MantraIcon.png" alt="" className='w-[2.2rem] h-[2.2rem] object-cover' />
+                <img src="/Assets/MantraIcon.png" alt="" className='w-[2.2rem] h-[2.2rem] object-cover' />
                 <h1 className='text-[32px] font-[600] text-[#35405F] lora cursor-pointer' onClick={() => navigate("/")}>Mantra Health</h1>
             </div>
 

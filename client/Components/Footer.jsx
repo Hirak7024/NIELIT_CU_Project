@@ -28,9 +28,9 @@ export default function Footer() {
                     </ul>
                 </div>
                 <ul className="flex flex-end gap-[5px]">
-                    <li><img src="./Assets/HIPAA-White.webp" alt="" className="w-[96px] h-[96px] object-contain" /></li>
-                    <li><img src="./Assets/SOC-2-White.webp" alt="" className="w-[96px] h-[96px] object-contain" /></li>
-                    <li><img src="./Assets/TX-RAMP.webp" alt="" className="w-[95px] h-[95px] object-contain" /></li>
+                    <li><img src="/Assets/HIPAA-White.webp" alt="" className="w-[96px] h-[96px] object-contain" /></li>
+                    <li><img src="/Assets/SOC-2-White.webp" alt="" className="w-[96px] h-[96px] object-contain" /></li>
+                    <li><img src="/Assets/TX-RAMP.webp" alt="" className="w-[95px] h-[95px] object-contain" /></li>
                 </ul>
             </div>
             <div className="w-full h-px bg-gray-700 mt-[40px]"></div>
@@ -56,7 +56,7 @@ export default function Footer() {
             <div className="w-full h-px bg-gray-700"></div>
             <div className="flex justify-between items-center mt-[48px]">
                 <ul className="flex items-center gap-[1rem] ">
-                   <li><img src="./Assets/Mantra-Icon-Reverse.png" className="w-[41px] h-[32px] object-contain" alt="" /></li> 
+                   <li><img src="/Assets/Mantra-Icon-Reverse.png" className="w-[41px] h-[32px] object-contain" alt="" /></li> 
                     <li className="text-[14px] text-[#A6ACC6] font-[600]">Privacy Policy</li>
                     <li className="text-[14px] text-[#A6ACC6] font-[600]">Terms & Conditions</li>
                     <li className="text-[14px] text-[#A6ACC6] font-[600]">Telehealth Consent</li>

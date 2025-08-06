@@ -12,18 +12,26 @@ def get_all_blogs(request):
     return Response(serializer.data)
 
 
-@api_view(['POST'])
-def get_single_blog(request):
-    blog_id = request.data.get('blog_id')
-    if not blog_id:
-        return Response({'error': 'blog_id is required'}, status=status.HTTP_400_BAD_REQUEST)
+# @api_view(['POST'])
+# def get_single_blog(request):
+#     blog_id = request.data.get('blog_id')
+#     if not blog_id:
+#         return Response({'error': 'blog_id is required'}, status=status.HTTP_400_BAD_REQUEST)
+#     try:
+#         blog = Blog.objects.get(id=blog_id)
+#         serializer = BlogSerializer(blog)
+#         return Response(serializer.data)
+#     except Blog.DoesNotExist:
+#         return Response({'error': 'Blog not found'}, status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['GET'])
+def get_single_blog(request, blog_id):
     try:
         blog = Blog.objects.get(id=blog_id)
         serializer = BlogSerializer(blog)
         return Response(serializer.data)
     except Blog.DoesNotExist:
         return Response({'error': 'Blog not found'}, status=status.HTTP_404_NOT_FOUND)
-
 
 @api_view(['POST'])
 def create_blog(request):

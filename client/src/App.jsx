@@ -16,8 +16,9 @@ import AnonymousUserChats from '../Pages/AdminSide/AnonymousUserChats'
 import YouTubeVideo from '../Pages/AdminSide/YouTubeVideo'
 import ConsultationForm from '../Pages/ConsultationForm'
 import Blogs from '../Pages/Blogs/Blogs'
-import './App.css'
 import CreateBlog from '../Pages/AdminSide/Blogs/CreateBlog'
+import SingleBlog from '../Pages/Blogs/SingleBlog'
+import './App.css'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path='/resources_mental_health_programs' element={<MentalHealthPrograms />} />
           <Route path='/consultationForm' element={<ConsultationForm/>}/>
           <Route path='/blogs' element={<Blogs/>}/>
+          <Route path='/blogs/singleBlog/:id' element={<SingleBlog/>}/>
         </Route>
 
         {/* AdminSide Routes */}
@@ -43,7 +45,7 @@ function App() {
           <Route path='/adminSide/registeredUsers' element={<RegisteredUsersChats />} />
           <Route path='/adminSide/anonymousUsers' element={<AnonymousUserChats />} />
           <Route path='/adminSide/youtubeVideos' element={<YouTubeVideo />} />
-          <Route path='adminSide/createBlog' element={<CreateBlog />} />
+          <Route path='/adminSide/createBlog' element={<CreateBlog />} />
         </Route>
       </Routes>
       <ToastContainer/>
