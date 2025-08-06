@@ -33,15 +33,15 @@ export default function Blogs() {
                     <button className='w-[140px] h-[55px] text-[16px] bg-[#2B59E3] text-white font-[600] rounded-[30px]'>Read More</button>
                 </div>
             </div>
-            <div className='pt-[3rem] w-[100%] flex gap-[1.5rem]'>
-                <div className='w-[60%]'>
-                    {blogs?.map((blog, index) => (
-                        <BlogItem blogData={blog} key={index} />
-                    ))}
-                </div>
-                <div className='w-[30%]'>
-
-                </div>
+            <div className='mt-[3rem] w-[60%] flex flex-col'>
+                {blogs?.map((blog, index) => (
+                    <div key={index}>
+                        <BlogItem blogData={blog} />
+                        {index !== blogs.length - 1 && (
+                            <div className="my-[20px] border-t border-gray-300"></div> // Light gray line
+                        )}
+                    </div>
+                ))}
             </div>
         </div>
     )

@@ -18,6 +18,7 @@ import ConsultationForm from '../Pages/ConsultationForm'
 import Blogs from '../Pages/Blogs/Blogs'
 import CreateBlog from '../Pages/AdminSide/Blogs/CreateBlog'
 import SingleBlog from '../Pages/Blogs/SingleBlog'
+import AllBlogs from '../Pages/AdminSide/Blogs/AllBlogs.jsx'
 import './App.css'
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
           <Route path='/adminSide/anonymousUsers' element={<AnonymousUserChats />} />
           <Route path='/adminSide/youtubeVideos' element={<YouTubeVideo />} />
           <Route path='/adminSide/createBlog' element={<CreateBlog />} />
+          <Route path='/adminSide/allBlogs' element={<AllBlogs />} />
         </Route>
       </Routes>
       <ToastContainer/>

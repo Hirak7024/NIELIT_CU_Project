@@ -16,6 +16,7 @@ export default function CreateBlog({ placeholder }) {
 
     const config = useMemo(() => ({
         height: 400,
+        width:'70vw',
         readonly: false,
         placeholder: placeholder || 'Write your blog here...'
     }), [placeholder]);
