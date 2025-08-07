@@ -7,14 +7,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { BiEdit } from "react-icons/bi";
-import { MdCancel, MdDeleteOutline, MdDone,MdOutlineCancel } from "react-icons/md";
+import { MdDeleteOutline, MdDone, MdOutlineCancel } from "react-icons/md";
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
 export default function YouTubeVideo() {
     const [videos, setVideos] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [, setLoading] = useState(true);
+    const [, setError] = useState(null);
     const [editingId, setEditingId] = useState(null);
     const [editedVideo, setEditedVideo] = useState({ video_title: '', video_link: '' });
 
@@ -29,7 +29,7 @@ export default function YouTubeVideo() {
             const response = await axios.post("http://127.0.0.1:8000/youtubeVideo/post/", formData)
             console.log(response.data);
             toast.success(response.data.message);
-            setFormData({video_title: "",video_link: ""})
+            setFormData({ video_title: "", video_link: "" })
         }
         catch (error) {
             console.error(error)
@@ -93,11 +93,6 @@ export default function YouTubeVideo() {
     // Save edited video
     const saveEdit = async (id) => {
         try {
-            const response = await axios.put("http://127.0.0.1:8000/youtubeVideo/edit/", {
-                id,
-                video_title: editedVideo.video_title,
-                video_link: editedVideo.video_link
-            });
 
             // Update local list
             setVideos(prev =>
@@ -121,9 +116,9 @@ export default function YouTubeVideo() {
 
     // To cancel Edit
     const cancelEdit = () => {
-    setEditingId(null);
-    setEditedVideo({ video_title: '', video_link: '' });
-};
+        setEditingId(null);
+        setEditedVideo({ video_title: '', video_link: '' });
+    };
 
 
     return (
@@ -223,17 +218,17 @@ export default function YouTubeVideo() {
                                                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                                                     {isEditing ? (
                                                         <>
-                                                        <MdDone
-                                                            title="Save"
-                                                            onClick={() => saveEdit(video.id)}
-                                                            style={{ cursor: 'pointer', color: 'green', fontSize: "1.5rem" }}
+                                                            <MdDone
+                                                                title="Save"
+                                                                onClick={() => saveEdit(video.id)}
+                                                                style={{ cursor: 'pointer', color: 'green', fontSize: "1.5rem" }}
                                                             />
-                                                         <MdOutlineCancel
-                                                            title="Cancel"
-                                                            onClick={cancelEdit}
-                                                            style={{ cursor: 'pointer', color: 'red', fontSize: "1.5rem" }}
+                                                            <MdOutlineCancel
+                                                                title="Cancel"
+                                                                onClick={cancelEdit}
+                                                                style={{ cursor: 'pointer', color: 'red', fontSize: "1.5rem" }}
                                                             />
-                                                            </>
+                                                        </>
                                                     ) : (
                                                         <>
                                                             <BiEdit

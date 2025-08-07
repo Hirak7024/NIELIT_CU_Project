@@ -38,26 +38,51 @@ def create_blog(request):
     serializer = BlogSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({
+            'message': 'Blog Created Successfully', 
+            'data': serializer.data}, status=status.HTTP_201_CREATED)
 
+    return Response({
+        'message': 'Failed to create blog', 
+        'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+# @api_view(['PUT'])
+# def update_blog(request):
+#     blog_id = request.data.get('blog_id')
+#     if not blog_id:
+#         return Response({'error': 'blog_id is required'}, status=status.HTTP_400_BAD_REQUEST)
+#     try:
+#         blog = Blog.objects.get(id=blog_id)
+#     except Blog.DoesNotExist:
+#         return Response({'error': 'Blog not found'}, status=status.HTTP_404_NOT_FOUND)
+
+#     serializer = BlogSerializer(blog, data=request.data)
+#     if serializer.is_valid():
+#         serializer.save()
+#         return Response(serializer.data)
+#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PUT'])
-def update_blog(request):
-    blog_id = request.data.get('blog_id')
-    if not blog_id:
-        return Response({'error': 'blog_id is required'}, status=status.HTTP_400_BAD_REQUEST)
+def update_blog(request, blog_id):
     try:
         blog = Blog.objects.get(id=blog_id)
     except Blog.DoesNotExist:
-        return Response({'error': 'Blog not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'message': 'Blog not found'}, status=status.HTTP_404_NOT_FOUND)
 
     serializer = BlogSerializer(blog, data=request.data)
     if serializer.is_valid():
         serializer.save()
-        return Response(serializer.data)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+        return Response({
+            'message': 'Blog Updated Successfully',
+            'data': serializer.data
+        }, status=status.HTTP_200_OK)
+    
+    return Response({
+        'message': 'Blog update failed',
+        'errors': serializer.errors
+    }, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
 def delete_blog(request):

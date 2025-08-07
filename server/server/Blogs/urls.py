@@ -6,6 +6,7 @@ urlpatterns = [
     # path('blog/single/', views.get_single_blog, name='get_single_blog'),  # POST with blog_id
     path('blog/<int:blog_id>/', views.get_single_blog, name='get_single_blog'),
     path('blog/create/', views.create_blog, name='create_blog'),          # POST
-    path('blog/update/', views.update_blog, name='update_blog'),          # PUT with blog_id
+    # path('blog/update/', views.update_blog, name='update_blog'),          # PUT with blog_id
+    path('blog/update/<int:blog_id>/', views.update_blog, name='update_blog'),
     path('blog/delete/', views.delete_blog, name='delete_blog'),          # POST with blog_id
 ]

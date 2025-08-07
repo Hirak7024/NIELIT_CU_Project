@@ -20,6 +20,8 @@ import CreateBlog from '../Pages/AdminSide/Blogs/CreateBlog'
 import SingleBlog from '../Pages/Blogs/SingleBlog'
 import AllBlogs from '../Pages/AdminSide/Blogs/AllBlogs.jsx'
 import './App.css'
+import SingleBlogPage from '../Pages/AdminSide/Blogs/SingleBlogPage.jsx'
+import EditBlog from '../Pages/AdminSide/Blogs/EditBlog.jsx'
 
 function App() {
   return (
@@ -48,6 +50,8 @@ function App() {
           <Route path='/adminSide/youtubeVideos' element={<YouTubeVideo />} />
           <Route path='/adminSide/createBlog' element={<CreateBlog />} />
           <Route path='/adminSide/allBlogs' element={<AllBlogs />} />
+          <Route path='/adminSide/singleBlogPage/:id' element={<SingleBlogPage />} />
+          <Route path='/adminSide/editBlogPage/:id' element={<EditBlog />} />
         </Route>
       </Routes>
       <ToastContainer/>
