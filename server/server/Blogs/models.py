@@ -3,7 +3,7 @@ from django.db import models
 class Blog(models.Model):
     heading = models.CharField(max_length=1023)
     subheading = models.CharField(max_length=1023, blank=True)
-    image_url = models.URLField(max_length=500, blank=True)
+    image_url = models.URLField(max_length=2047, blank=True)
     content = models.TextField()  # Rich text from jodit-react
     created_at = models.DateTimeField(auto_now_add=True)
 

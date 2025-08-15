@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BiEdit } from "react-icons/bi";
 import { MdDeleteOutline } from "react-icons/md";
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 export default function AllBlogs() {
 
@@ -14,6 +15,7 @@ export default function AllBlogs() {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/blogs/blog/')
                 setBlogs(response.data)
+                console.log(response.data)
             } catch (error) {
                 console.error('Failed to fetch blogs:', error)
             }
@@ -31,15 +33,25 @@ export default function AllBlogs() {
         })
     }
 
-
+    const handleDelete = async (blog_id) => {
+        console.log(blog_id)
+        try {
+            const response = await axios.post("http://127.0.0.1:8000/blogs/blog/delete/", { blog_id });
+            toast.success(response.data.message);
+            setBlogs((prevBlogs)=>prevBlogs.filter((blog)=>blog.id !== blog_id))
+        } catch (error) {
+            console.error(error.response.data.message);
+            toast.error(error.response.data.message);
+        }
+    }
 
     return (
-        <div className='ml-[20rem] w-[100%] px-[2rem]'>
+        <div className='ml-[20rem] w-[100%] h-fit px-[2rem] mb-[2rem]'>
             <h1 className='text-[40px] dm-serif font-[400] mt-[1rem] mb-[2rem]'>Blogs</h1>
             {blogs?.map((blog, index) => (
                 <div key={index}>
                     <div className='w-[100%] flex justify-between items-center'>
-                        <div className='h-fit flex gap-[1rem]' onClick={()=> navigate(`/adminSide/singleBlogPage/${blog.id}`)}>
+                        <div className='h-fit flex gap-[1rem]' onClick={() => navigate(`/adminSide/singleBlogPage/${blog.id}`)}>
                             <img src={blog.image_url} className='w-[80px] h-[76px] object-cover rounded-md cursor-pointer' alt="" />
                             <div className='flex flex-col gap-[7px] cursor-pointer'>
                                 <div className='flex gap-[15px]'>
@@ -50,10 +62,10 @@ export default function AllBlogs() {
                             </div>
                         </div>
                         <div className='flex gap-[1rem] mr-[1rem]'>
-                            <BiEdit title='Edit' 
-                            onClick={()=>navigate(`/adminSide/editBlogPage/${blog.id}`)}
-                            style={{ cursor: 'pointer', color: 'blue', fontSize: "1.5rem" }} />
-                            <MdDeleteOutline title='Delete' style={{ cursor: 'pointer', color: 'red', fontSize: "1.5rem" }} />
+                            <BiEdit title='Edit'
+                                onClick={() => navigate(`/adminSide/editBlogPage/${blog.id}`)}
+                                style={{ cursor: 'pointer', color: 'blue', fontSize: "1.5rem" }} />
+                            <MdDeleteOutline onClick={() => handleDelete(blog.id)} title='Delete' style={{ cursor: 'pointer', color: 'red', fontSize: "1.5rem" }} />
                         </div>
                     </div>
                     {index !== blogs.length - 1 && (
