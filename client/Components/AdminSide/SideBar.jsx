@@ -35,9 +35,9 @@ export default function Sidebar() {
                     <ListItemText sx={{ fontSize: "20px", marginLeft: "1rem", padding: "5px" }} primary="Youtube Videos" />
                 </ListItemButton>
 
-                <ListItemButton sx={{ '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }}>
+                {/* <ListItemButton sx={{ '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }}>
                     <ListItemText sx={{ fontSize: "20px", marginLeft: "1rem", padding: "5px" }} primary="Users" />
-                </ListItemButton>
+                </ListItemButton> */}
 
                 {/* Blogs Section */}
                 <ListItemButton onClick={handleBlogsClick} sx={{ '&:hover': { bgcolor: "#596ca4", cursor: "pointer" } }}>

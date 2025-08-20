@@ -21,7 +21,7 @@ export default function RegisteredUsersChats() {
       try {
         const response = await axios.get("http://127.0.0.1:8000/chat/registered/");
         setChats(response.data);
-        console.log(response.data); // For debugging
+        console.log("Registered Users Chats:", response.data);
       } catch (err) {
         console.error("Failed to fetch chats:", err);
         setError("Failed to load registered user chats.");
@@ -47,7 +47,7 @@ export default function RegisteredUsersChats() {
     <div className='w-full h-full px-[2.5rem] py-[1rem] ml-[20rem]'>
       <div className="flex items-center justify-between mb-[1.5rem]">
         <h1 className='text-[35px] dm-serif font-[500]'>
-          {showMessageResponse ? 'User Chat Message' : 'Registered Users'}
+          {showMessageResponse ? 'User Chat Conversation' : 'Registered Users'}
         </h1>
         {showMessageResponse && (
           <Button
@@ -63,13 +63,15 @@ export default function RegisteredUsersChats() {
 
       {!showMessageResponse ? (
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table sx={{ minWidth: 650 }} aria-label="registered users table">
             <TableHead>
               <TableRow>
                 <TableCell align='left' sx={{ fontWeight: "600" }}>Id</TableCell>
                 <TableCell align='left' sx={{ fontWeight: "600" }}>Session Id</TableCell>
                 <TableCell align="left" sx={{ fontWeight: "600" }}>Name</TableCell>
                 <TableCell align="left" sx={{ fontWeight: "600" }}>Email</TableCell>
+                <TableCell align="left" sx={{ fontWeight: "600" }}>TimeStamp</TableCell>
+                <TableCell align="left" sx={{ fontWeight: "600" }}>Chats Count</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -83,6 +85,8 @@ export default function RegisteredUsersChats() {
                   <TableCell align="left">{chat.session_id}</TableCell>
                   <TableCell align="left">{chat.name}</TableCell>
                   <TableCell align="left">{chat.email}</TableCell>
+                  <TableCell>{new Date(chat.timestamp).toLocaleString()}</TableCell>
+                  <TableCell align="left">{chat.chats?.length || 0}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -91,17 +95,24 @@ export default function RegisteredUsersChats() {
       ) : (
         selectedChat && (
           <div style={{ marginBottom: '2rem' }}>
+            <h2 className="text-[22px] font-[600] mb-3">Session: {selectedChat.session_id}</h2>
             <TableContainer component={Paper}>
               <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell sx={{ fontWeight: "600", width:"15rem" }}>User Message</TableCell>
+                    <TableCell sx={{ fontWeight: "600" }}>Bot Response</TableCell>
+                    {/* <TableCell sx={{ fontWeight: "600" }}>Timestamp</TableCell> */}
+                  </TableRow>
+                </TableHead>
                 <TableBody>
-                  <TableRow>
-                    <TableCell sx={{ fontWeight: 'bold',width:"8rem" }}>Message</TableCell>
-                    <TableCell>{selectedChat.user_message}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ fontWeight: 'bold',width:"8rem"  }}>Bot Response</TableCell>
-                    <TableCell>{selectedChat.bot_response}</TableCell>
-                  </TableRow>
+                  {selectedChat.chats?.map((msg, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{msg.user}</TableCell>
+                      <TableCell>{msg.bot}</TableCell>
+                      {/* <TableCell>{new Date(msg.timestamp).toLocaleString()}</TableCell> */}
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </TableContainer>

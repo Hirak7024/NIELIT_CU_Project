@@ -22,6 +22,7 @@ export default function AnonymousUsersChats() {
       try {
         const response = await axios.get("http://127.0.0.1:8000/chat/unregistered/");
         setChats(response.data);
+        console.log("Anonymous Users Chats:", response.data);
       } catch (err) {
         console.error("Failed to fetch chats:", err);
         setError("Failed to load anonymous user chats.");
@@ -30,7 +31,6 @@ export default function AnonymousUsersChats() {
       }
     };
     fetchChats();
-    console.log(chats)
   }, []);
 
   const handleRowDoubleClick = (chat) => {
@@ -47,7 +47,7 @@ export default function AnonymousUsersChats() {
     <div className='w-full h-full px-[2.5rem] py-[1rem] ml-[20rem]'>
       <div className="flex items-center justify-between mb-[1.5rem]">
         <h1 className='text-[35px] dm-serif font-[500]'>
-          {showMessageResponse ? 'Anonymous User Chat Message' : 'Anonymous Users'}
+          {showMessageResponse ? 'Anonymous User Chat Messages' : 'Anonymous Users'}
         </h1>
         {showMessageResponse && (
           <Button
@@ -63,11 +63,12 @@ export default function AnonymousUsersChats() {
 
       {!showMessageResponse ? (
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table sx={{ minWidth: 650 }} aria-label="anonymous users table">
             <TableHead>
               <TableRow>
                 <TableCell align='left' sx={{ fontWeight: "600" }}>Id</TableCell>
                 <TableCell align='left' sx={{ fontWeight: "600" }}>Session Id</TableCell>
+                <TableCell align='left' sx={{ fontWeight: "600" }}>Timestamp</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -79,6 +80,7 @@ export default function AnonymousUsersChats() {
                 >
                   <TableCell component="th" scope="row" align='left'>{chat.id}</TableCell>
                   <TableCell align="left">{chat.session_id}</TableCell>
+                  <TableCell align="left">{new Date(chat.timestamp).toLocaleString()}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -87,17 +89,24 @@ export default function AnonymousUsersChats() {
       ) : (
         selectedChat && (
           <div style={{ marginBottom: '2rem' }}>
+            <h2 className="text-[22px] font-semibold mb-4">
+              Session ID: {selectedChat.session_id}
+            </h2>
             <TableContainer component={Paper}>
               <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell sx={{ fontWeight: 'bold', width: "40%" }}>User Message</TableCell>
+                    <TableCell sx={{ fontWeight: 'bold', width: "60%" }}>Bot Response</TableCell>
+                  </TableRow>
+                </TableHead>
                 <TableBody>
-                  <TableRow>
-                    <TableCell sx={{ fontWeight: 'bold',width:"8rem" }}>Message</TableCell>
-                    <TableCell>{selectedChat.user_message}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell sx={{ fontWeight: 'bold',width:"8rem"  }}>Bot Response</TableCell>
-                    <TableCell>{selectedChat.bot_response}</TableCell>
-                  </TableRow>
+                  {selectedChat.chats.map((c, idx) => (
+                    <TableRow key={idx}>
+                      <TableCell>{c.user}</TableCell>
+                      <TableCell>{c.bot}</TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </TableContainer>
