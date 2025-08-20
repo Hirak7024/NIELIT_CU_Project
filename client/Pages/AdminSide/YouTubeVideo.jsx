@@ -13,8 +13,8 @@ import axios from 'axios';
 
 export default function YouTubeVideo() {
     const [videos, setVideos] = useState([]);
-    const [, setLoading] = useState(true);
-    const [, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [editingId, setEditingId] = useState(null);
     const [editedVideo, setEditedVideo] = useState({ video_title: '', video_link: '' });
 
@@ -29,6 +29,7 @@ export default function YouTubeVideo() {
             const response = await axios.post("http://127.0.0.1:8000/youtubeVideo/post/", formData)
             console.log(response.data);
             toast.success(response.data.message);
+            setVideos(prev => [...prev, response.data.data]);
             setFormData({ video_title: "", video_link: "" })
         }
         catch (error) {
@@ -51,6 +52,7 @@ export default function YouTubeVideo() {
             try {
                 const response = await axios.get("http://127.0.0.1:8000/youtubeVideo/fetch/");
                 setVideos(response.data);
+                console.log(response.data)
             } catch (err) {
                 console.error("Failed to fetch videos:", err);
                 setError("Failed to load Videos");
@@ -59,7 +61,7 @@ export default function YouTubeVideo() {
             }
         };
         fetchVideos();
-    }, [addVideo]);
+    }, []);
 
     // Extract YouTube video ID
     const getYouTubeVideoId = (url) => {
@@ -91,23 +93,29 @@ export default function YouTubeVideo() {
     };
 
     // Save edited video
-    const saveEdit = async (id) => {
-        try {
+const saveEdit = async (id) => {
+    try {
+        const response = await axios.put("http://127.0.0.1:8000/youtubeVideo/edit/", {
+            id,
+            ...editedVideo
+        });
 
-            // Update local list
-            setVideos(prev =>
-                prev.map(video =>
-                    video.id === id ? { ...video, ...editedVideo } : video
-                )
-            );
+        toast.success(response.data.message || "Video updated successfully");
 
-            setEditingId(null);
-            setEditedVideo({ video_title: '', video_link: '' });
-        } catch (err) {
-            console.error("Failed to update video", err);
-            alert("Failed to update video");
-        }
-    };
+        // Update local state after successful API call
+        setVideos(prev =>
+            prev.map(video =>
+                video.id === id ? { ...video, ...editedVideo } : video
+            )
+        );
+
+        setEditingId(null);
+        setEditedVideo({ video_title: '', video_link: '' });
+    } catch (err) {
+        console.error("Failed to update video", err);
+        toast.error("Failed to update video");
+    }
+};
 
     // Update input field values
     const handleEditChange = (field, value) => {

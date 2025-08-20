@@ -35,6 +35,7 @@ export default function AllBlogs() {
 
     const handleDelete = async (blog_id) => {
         console.log(blog_id)
+        if (!window.confirm("Are you sure you want to delete this blog?")) return;
         try {
             const response = await axios.post("http://127.0.0.1:8000/blogs/blog/delete/", { blog_id });
             toast.success(response.data.message);

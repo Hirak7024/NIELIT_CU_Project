@@ -34,7 +34,7 @@ export default function SingleBlogPage() {
     }
 
     const handleBlogDelete=async()=>{
-        console.log("Delete Button is Clicked")
+        if (!window.confirm("Are you sure you want to delete this blog?")) return;
         try {
             const response = await axios.post("http://127.0.0.1:8000/blogs/blog/delete/", {blog_id:id});
             console.log(response.data.message);
